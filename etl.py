@@ -6,6 +6,13 @@ dfx = pd.read_excel('bank.xlsx')
 dfc = pd.read_csv('bank.csv')
 dfb = pd.read_excel('branch.xlsx')
 
+print("dfx: ")
+print(dfx)
+print("dfc: ")
+print(dfc)
+print("dfb: ")
+print(dfb)
+
 #Concatenate the two dataframes
 df = pd.concat([dfx, dfc], ignore_index=True)
 
@@ -43,6 +50,9 @@ df["Balance Amount"] = df["Balance"].apply(lambda x: percentile(x))
 
 #Join table with branch data
 df = df.merge(dfb)
+
+print("Final dataframe after transformations: ")
+print(df)
 
 #Load to new CSV file
 df.to_csv('transformed.csv', index=False)
